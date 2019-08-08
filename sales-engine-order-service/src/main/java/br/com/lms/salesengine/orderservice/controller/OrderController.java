@@ -36,6 +36,11 @@ public class OrderController {
 	public ResponseEntity<Iterable<Order>> findAll() {
 		return ResponseEntity.ok().body(orderService.findAll());
 	}
+	
+	@RequestMapping(value = "/{id}/status", method = RequestMethod.GET)
+    public ResponseEntity<?> checkStatus(@PathVariable("id") Integer id){
+        return ResponseEntity.ok(orderService.checkStatus( id ));
+    }
 
 	@DeleteMapping(value = "/{id}")
 	public ResponseEntity<Order> delete(@PathVariable("id") Integer id) {
