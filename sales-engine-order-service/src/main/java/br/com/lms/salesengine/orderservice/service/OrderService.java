@@ -39,6 +39,11 @@ public class OrderService {
 
 	public String checkStatus(Integer id) {
 		Optional<Order> order = orderRepository.findById(id);
-		return paymentClient.checkStatus(order.get().getCode());
+
+		if (order.isPresent()) {
+			return paymentClient.checkStatus(order.get().getCode());
+		}
+
+		return null;
 	}
 }

@@ -15,8 +15,13 @@ public class SecurityConfiguration extends ResourceServerConfigurerAdapter {
 
 	@Override
 	public void configure(HttpSecurity http) throws Exception {
-		http.requestMatchers().antMatchers("/**").and().authorizeRequests().anyRequest().authenticated()
-				.antMatchers(HttpMethod.GET, "/**").access("#oauth2.hasScope('read')")
+		http.requestMatchers()
+				.antMatchers("/**")
+				.and()
+				.authorizeRequests()
+				.anyRequest()
+				.authenticated()
+				.antMatchers( HttpMethod.GET, "/**").access("#oauth2.hasScope('read')")
 				.antMatchers(HttpMethod.OPTIONS, "/**").access("#oauth2.hasScope('read')")
 				.antMatchers(HttpMethod.POST, "/**").access("#oauth2.hasScope('write')")
 				.antMatchers(HttpMethod.PUT, "/**").access("#oauth2.hasScope('write')")
@@ -25,7 +30,7 @@ public class SecurityConfiguration extends ResourceServerConfigurerAdapter {
 	}
 
 	@Override
-	public void configure(ResourceServerSecurityConfigurer resources) {
+	public void configure(ResourceServerSecurityConfigurer resources){
 		resources.resourceId(RESOURCE_ID);
 	}
 }

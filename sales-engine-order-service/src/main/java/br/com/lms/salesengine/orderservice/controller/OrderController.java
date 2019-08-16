@@ -1,5 +1,6 @@
 package br.com.lms.salesengine.orderservice.controller;
 
+import br.com.lms.salesengine.orderservice.dto.OrderDTO;
 import br.com.lms.salesengine.orderservice.model.Order;
 import br.com.lms.salesengine.orderservice.service.OrderService;
 
@@ -18,7 +19,13 @@ public class OrderController {
 	private OrderService orderService;
 
 	@PostMapping
-	public ResponseEntity<Order> save(@RequestBody Order order) {
+	public ResponseEntity<Order> save(@RequestBody OrderDTO orderDTO) {
+		Order order = new Order();
+		order.setId(null);
+		order.setProduct(orderDTO.getProduct());
+		order.setPrice(orderDTO.getPrice());
+		order.setCode(orderDTO.getCode());
+
 		return ResponseEntity.ok(orderService.save(order));
 	}
 
@@ -36,11 +43,11 @@ public class OrderController {
 	public ResponseEntity<Iterable<Order>> findAll() {
 		return ResponseEntity.ok().body(orderService.findAll());
 	}
-	
-	@RequestMapping(value = "/{id}/status", method = RequestMethod.GET)
-    public ResponseEntity<?> checkStatus(@PathVariable("id") Integer id){
-        return ResponseEntity.ok(orderService.checkStatus( id ));
-    }
+
+	@GetMapping(value = "/{id}/status")
+	public ResponseEntity<?> checkStatus(@PathVariable("id") Integer id) {
+		return ResponseEntity.ok(orderService.checkStatus(id));
+	}
 
 	@DeleteMapping(value = "/{id}")
 	public ResponseEntity<Order> delete(@PathVariable("id") Integer id) {

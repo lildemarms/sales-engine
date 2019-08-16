@@ -7,6 +7,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 @FeignClient(name = "sales-engine-payments-service")
 public interface PaymentClient {
 
-	@GetMapping("/api/payments-status/{orderCode}")
+	@GetMapping("/api/payments/{orderCode}/status")
 	String checkStatus(@Param("orderCode") String orderCode);
 }

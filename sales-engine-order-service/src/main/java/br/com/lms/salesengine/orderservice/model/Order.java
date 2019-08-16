@@ -14,7 +14,7 @@ import javax.validation.constraints.NotNull;
 @Table(name = "sys_order")
 public class Order implements Serializable {
 
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = -8521037276228451146L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)

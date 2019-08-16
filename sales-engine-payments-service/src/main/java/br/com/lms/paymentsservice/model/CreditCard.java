@@ -3,13 +3,19 @@ package br.com.lms.paymentsservice.model;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name = "credit_card")
@@ -24,9 +30,13 @@ public class CreditCard implements Serializable {
 	@NotEmpty(message = "Holder is Required")
 	private String holder;
 
+	@Column(length = 20)
+	@Size(min = 5, max = 20)
 	@NotNull(message = "Credit Card Number is Required")
 	private String number;
 
+	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	@NotNull(message = "Credit Card expiration Date is Required")
 	private Date expiration;
 
