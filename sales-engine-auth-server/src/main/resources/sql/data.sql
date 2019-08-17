@@ -1,9 +1,9 @@
 DELETE FROM public.oauth_client_details;
 
-INSERT INTO public.user (username, email, password, activated)
+INSERT INTO public.sys_user (username, email, password, activated)
 SELECT * FROM (SELECT 'admin', 'admin@admin.com', '$2a$10$r0RFDmpneBVryx.ihHK9gu6FFJQi4nTxQUqzdSTvrPpaKZMxigqpy', true) AS tmp
 WHERE NOT EXISTS (
-    SELECT username FROM public.user WHERE username = 'admin'
+    SELECT username FROM public.sys_user WHERE username = 'admin'
 ) LIMIT 1;
 
 INSERT INTO public.authority (name)
