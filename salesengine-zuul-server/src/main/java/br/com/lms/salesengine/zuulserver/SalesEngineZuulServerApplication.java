@@ -13,5 +13,4 @@ public class SalesEngineZuulServerApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(SalesEngineZuulServerApplication.class, args);
 	}
-
 }
