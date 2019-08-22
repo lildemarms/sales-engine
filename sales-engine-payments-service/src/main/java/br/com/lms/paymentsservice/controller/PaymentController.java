@@ -53,6 +53,6 @@ public class PaymentController {
 	
 	@GetMapping(value = "/{orderCode}/status")
 	public ResponseEntity<String> checkStatus(@PathVariable("orderCode") Integer orderCode) {
-		return ResponseEntity.ok().body("XXX");
+		return ResponseEntity.ok().body("PENDING");
 	}
 }

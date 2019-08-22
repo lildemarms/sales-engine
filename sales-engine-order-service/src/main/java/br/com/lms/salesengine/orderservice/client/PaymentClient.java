@@ -17,7 +17,7 @@ class PaymentFallback implements PaymentClient {
 
 	@Override
 	public String checkStatus(String orderCode) {
-		return "PENDING";
+		return "xXx";
 	}
 
 }
