@@ -78,4 +78,6 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
 		}
 		return encoder;
 	}
+	
+	 
 }

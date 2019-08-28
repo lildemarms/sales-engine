@@ -52,7 +52,7 @@ public class PaymentController {
 	}
 	
 	@GetMapping(value = "/{orderCode}/status")
-	public ResponseEntity<String> checkStatus(@PathVariable("orderCode") Integer orderCode) {
-		return ResponseEntity.ok().body("PENDING");
+	public ResponseEntity<String> checkStatus(@PathVariable("orderCode") String orderCode) {
+		return ResponseEntity.ok().body("PENDING" + " - " + orderCode);
 	}
 }
