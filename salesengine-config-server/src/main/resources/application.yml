@@ -9,4 +9,3 @@ spring:
       server:
         native:
           search-locations: file:///C:/eclipse-workspace/sales-engine-configs
-        
